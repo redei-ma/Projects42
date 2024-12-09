@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 12:32:01 by redei-ma          #+#    #+#             */
-/*   Updated: 2024/12/09 18:49:23 by redei-ma         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:08:50 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	ft_check(char c, va_list params)
 	if (c == 'c')
 		count += ft_putchar(va_arg (params, int));
 	else if (c == 's')
-		count += ft_putstr(va_arg (params, char*));
+		count += ft_putstr(va_arg (params, char *));
 	else if (c == 'p')
-		count += ft_putptr((long long)va_arg (params, void*));
+		count += ft_putptr(va_arg (params, unsigned long long));
 	else if (c == 'd')
 		count += ft_putnbr(va_arg(params, int));
 	else if (c == 'i')
@@ -36,32 +36,19 @@ int	ft_check(char c, va_list params)
 	else
 		count = -1;
 	return (count);
-} 
+}
 
 int	ft_printf(const char *format, ...)
 {
-	// int		i;
-	// int		j;
 	int		count;
 	va_list	params;
 
-	if(!format)
+	if (!format)
 		return (-1);
 	va_start(params, format);
 	count = 0;
-	// i = 0;
-	// j = 0;
-	while(*format)
+	while (*format)
 	{
-		// j = 1;
-		// if (format[i] == '%' && format[i + j] == ' ')
-		// {
-		// 	while(format[i + j] == ' ')
-		// 		j++;
-		// 	// count += ft_putchar(' ');
-		// 	count += ft_check(format[i + j], params);
-		// 	i += j;
-		// }
 		if (*format == '%')
 		{
 			count += ft_check(format[1], params);
@@ -69,18 +56,8 @@ int	ft_printf(const char *format, ...)
 		}
 		else
 			count += ft_putchar(*format);
-			// write(1, "error", 5);
 		format++;
 	}
 	va_end(params);
 	return (count);
 }
-
-/* int main()
-{
-	int i = ft_printf("ciao %p", "scemi");
-	printf("\n");
-	int j = printf("ciao %p", "scemi");
-	printf("\n");
-	printf("F: %d\nO: %d", i, j);
-} */

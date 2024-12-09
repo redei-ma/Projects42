@@ -6,21 +6,11 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 21:14:47 by redei-ma          #+#    #+#             */
-/*   Updated: 2024/12/09 18:44:48 by redei-ma         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:02:13 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	n;
-
-	n = 0;
-	while (str[n] != '\0')
-		n++;
-	return (n);
-}
 
 int	ft_putchar(char c)
 {
@@ -38,9 +28,10 @@ size_t	ft_putstr(char *s)
 		write(1, "(null)", 6);
 		return (6);
 	}
-	i = ft_strlen(s);
+	while (s[i])
+		i++;
 	write(1, s, i);
-	return(i);
+	return (i);
 }
 
 int	ft_putnbr(long long n)
