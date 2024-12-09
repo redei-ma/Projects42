@@ -1,3 +1,5 @@
+#include "ft_printf.h"
+
 /* int main ()
 {
 	printf("t; ciao6%  t");
@@ -35,8 +37,15 @@
 	// ft_printf();
 } */
 
-int main()
+
+int main() 
 {
-	int i = printf("%d\n", -42);
-	printf("%d", i);
+    int x = 42;
+    int *ptr = &x;
+
+    int d = printf("Indirizzo del puntatore con printf originale: %p\n", ptr);
+    int m = ft_printf("Indirizzo del puntatore con ft_printf: %p\n", ptr);
+
+	printf("\n%d\n%d", d, m);
+    return 0;
 }
