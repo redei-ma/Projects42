@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 12:32:01 by redei-ma          #+#    #+#             */
-/*   Updated: 2024/12/09 19:08:50 by redei-ma         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:45:33 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ int	ft_check(char c, va_list params)
 		count += ft_puthex(va_arg(params, unsigned int), c);
 	else if (c == '%')
 		count += ft_putchar('%');
-	else
-		count = -1;
 	return (count);
 }
 
