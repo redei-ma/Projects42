@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 21:14:47 by redei-ma          #+#    #+#             */
-/*   Updated: 2024/12/10 16:35:24 by redei-ma         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:02:13 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,3 @@ int	ft_putptr(unsigned long long n)
 	write(1, &base[n], 1);
 	return (i + 1);
 }
-
