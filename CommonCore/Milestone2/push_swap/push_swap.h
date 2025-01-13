@@ -24,6 +24,7 @@ void	ft_rr(t_list **head_a, t_list **head_b);
 void	ft_rra(t_list **head_a);
 void	ft_rrb(t_list **head_b);
 void	ft_rrr(t_list **head_a, t_list **head_b);
+int		check_finish(t_list *head_a, t_list *head_b);
 
 
 #endif
