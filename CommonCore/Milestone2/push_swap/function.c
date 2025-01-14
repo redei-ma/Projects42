@@ -57,7 +57,11 @@ void	ft_pa(t_list **head_a, t_list **head_b)
 			(*head_b)->prev = NULL;
 		}
 		else
+		{
+			(*head_b)->next = NULL;
+			(*head_b)->prev = NULL;
 			*head_b = NULL;
+		}
 		if (*head_a)
 			(*head_a)->prev = tmp;
 		tmp->next = *head_a;

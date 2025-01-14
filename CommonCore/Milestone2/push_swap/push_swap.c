@@ -132,49 +132,80 @@ int	checkduplicate(t_list *lst)
 	return (1);
 }
 
-void	ft_algoritmo(size_t head_a, size_t head_b)
+int	ft_abs(int x)
+{
+	if (x < 0)
+		return (-x);
+	else
+		return (x);
+}
+
+void	ft_algoritmo(t_list *head_a, t_list *head_b)
 {
 	int	i;
+	int	min_wei;
+	int	pos;
 	int	*weight_a;
 	int *weight_b;
+	int	moves[2];
 	int	*total;
 
-	while (ft_lstsize(head_a)-- > 2)
-		ft_pb(&head_a, &head_b);
-	while (1)
+	total = (int *)ft_calloc(ft_lstsize(head_b), sizeof(int));
+	i = 0;
+	weight_a = ft_weight_a(head_a, head_b);
+	weight_b = ft_weight_b(head_b);
+	while (i <= ft_lstsize(head_b))
 	{
-		i = 0;
-		weight_a = ft_weight_a(head_a);
-		weight_b = ft_weight_a(head_b);
-		while (i <= ft_lstsize(head_b))
+		if (weight_a[i] >= 0 && weight_b[i] >= 0)
 		{
-			if (weight_a[i] >= 0 && weight_b[i] >= 0)
-			{
-				if (weight_a[i] > weight_b[i])
-					total[i] = weight_a[i];
-				else
-					total[i] = weight_b[i];
-			}
-			else if (weight_a[i] < 0 && weight_b[i] < 0)
-			{
-				if (weight_a[i] < weight_b[i])
-					total[i] = weight_a[i];
-				else
-					total[i] = weight_b[i];
-			}
+			//printf("%i\n", weight_b[i]);
+			//printf("%i\n", weight_a[i]);
+			if (weight_a[i] > weight_b[i])
+				total[i] = weight_a[i];
 			else
-			{
-				if (weight_a[i] < 0)
-					total[i] = -weight_a[i] + weight_b[i];
-				else
-					total[i] = weight_a[i] + (-weight_b[i]);
-			}
+				total[i] = weight_b[i];
 		}
-		/*
-		ora dobbiamo controllare quale e il peso piu piccolo, prenderlo e fare una funazone che faccia le 
-		mosse stabilite dai due array tenendo anche conto delle combo quando sono uguali
-		*/
+		else if (weight_a[i] < 0 && weight_b[i] < 0)
+		{
+			if (weight_a[i] < weight_b[i])
+				total[i] = weight_a[i];
+			else
+				total[i] = weight_b[i];	
+		}	
+		else
+		{
+			total[i] = ft_abs(weight_a[i]) + ft_abs(weight_b[i]);
+			/*if (weight_a[i] < 0)
+				total[i] = -weight_a[i] + weight_b[i];
+			else
+				total[i] = weight_a[i] + (-weight_b[i]);*/
+		}
+		i++;
 	}
+
+	/*
+	ora dobbiamo controllare quale e il peso piu piccolo, prenderlo e fare una funazone che faccia le 
+	mosse stabilite dai due array tenendo anche conto delle combo quando sono uguali
+	*/
+	min_wei = ft_abs(total[0]);
+	pos = 0;
+	i = 0;
+	while (i < ft_lstsize(head_b))
+	{
+		if(ft_abs(total[i]) < min_wei)
+		{
+			pos = i;
+			min_wei = ft_abs(total[i]);
+		}
+		i++;
+	}
+	//teoricamente si potrebbe sovrascrivere total dato che a questo punto del prpgramma non serve piu', per scaramanzia usiamo moves pi si vedra in corso d'opera;
+	moves[0] = weight_a[pos];
+	moves[1] = weight_b[pos];
+	make_move(pos, moves, head_a, head_b);
+	free(weight_a);
+	free(weight_b);
+	free(total);
 }
 
 int main(int ac, char **av)
@@ -197,8 +228,14 @@ int main(int ac, char **av)
 		if (head_a-> value > head_a->next->value)
 			ft_sa(&head_a);
 	}
-	ft_algoritmo(head_a, head_b);
-
+	while (size-- > 2)
+		ft_pb(&head_a, &head_b);
+	while (head_b)
+	{
+		ft_lstprint(head_a, head_b);
+		ft_algoritmo(head_a, head_b);
+		//head_b = head_b->next;
+	}
 
 
 
