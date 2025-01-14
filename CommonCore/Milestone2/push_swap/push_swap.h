@@ -27,4 +27,8 @@ void	ft_rrr(t_list **head_a, t_list **head_b);
 int		check_finish(t_list *head_a, t_list *head_b);
 
 
+void	*ft_memset(void *s, int c, size_t n);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t nmemb, size_t size);
+
 #endif

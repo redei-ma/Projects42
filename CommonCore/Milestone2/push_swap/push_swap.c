@@ -35,14 +35,14 @@ t_list	*ft_lstnew(char *av)
 	int content;
 
 	content = ft_atoi(av);
-	if (content == 0 && !(av[0] == '0' && av[1] == '\0'))
+	if (content == 0 && !(av[0] == '0' && av[1] == '\0')) // fare un ciclo while che salti gli spazi per metterli anche in atoi
 		return (NULL);
 	node = (t_list *)malloc(1 * sizeof(t_list));
 	if (!node)
 		return (NULL);
 	node -> value = content;
 	node -> next = NULL;
-	node -> prev = NULL; //capire se serve questa cosa
+	node -> prev = NULL;
 	return (node);
 }
 
@@ -132,6 +132,51 @@ int	checkduplicate(t_list *lst)
 	return (1);
 }
 
+void	ft_algoritmo(size_t head_a, size_t head_b)
+{
+	int	i;
+	int	*weight_a;
+	int *weight_b;
+	int	*total;
+
+	while (ft_lstsize(head_a)-- > 2)
+		ft_pb(&head_a, &head_b);
+	while (1)
+	{
+		i = 0;
+		weight_a = ft_weight_a(head_a);
+		weight_b = ft_weight_a(head_b);
+		while (i <= ft_lstsize(head_b))
+		{
+			if (weight_a[i] >= 0 && weight_b[i] >= 0)
+			{
+				if (weight_a[i] > weight_b[i])
+					total[i] = weight_a[i];
+				else
+					total[i] = weight_b[i];
+			}
+			else if (weight_a[i] < 0 && weight_b[i] < 0)
+			{
+				if (weight_a[i] < weight_b[i])
+					total[i] = weight_a[i];
+				else
+					total[i] = weight_b[i];
+			}
+			else
+			{
+				if (weight_a[i] < 0)
+					total[i] = -weight_a[i] + weight_b[i];
+				else
+					total[i] = weight_a[i] + (-weight_b[i]);
+			}
+		}
+		/*
+		ora dobbiamo controllare quale e il peso piu piccolo, prenderlo e fare una funazone che faccia le 
+		mosse stabilite dai due array tenendo anche conto delle combo quando sono uguali
+		*/
+	}
+}
+
 int main(int ac, char **av)
 {
 	t_list *head_a;
@@ -152,13 +197,12 @@ int main(int ac, char **av)
 		if (head_a-> value > head_a->next->value)
 			ft_sa(&head_a);
 	}
-	while (size-- > 2)
-		ft_pb(&head_a, &head_b);
-	if (head_a-> value > head_a->next->value)
-			ft_sa(&head_a);
+	ft_algoritmo(head_a, head_b);
+
+
+
+
 	ft_lstprint(head_a, head_b);
-
-
 	/*if (head_b)
 	while (1)
 	{
