@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/a.out",
-			"args": ["1", "154", "12", "76"],
+			"args": ["54", "12", "76"],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],

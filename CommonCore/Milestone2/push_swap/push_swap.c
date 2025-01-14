@@ -140,7 +140,7 @@ int	ft_abs(int x)
 		return (x);
 }
 
-void	ft_algoritmo(t_list *head_a, t_list *head_b)
+void	ft_algoritmo(t_list **head_a, t_list **head_b)
 {
 	int	i;
 	int	min_wei;
@@ -150,11 +150,11 @@ void	ft_algoritmo(t_list *head_a, t_list *head_b)
 	int	moves[2];
 	int	*total;
 
-	total = (int *)ft_calloc(ft_lstsize(head_b), sizeof(int));
+	total = (int *)ft_calloc(ft_lstsize(*head_b), sizeof(int));
 	i = 0;
-	weight_a = ft_weight_a(head_a, head_b);
-	weight_b = ft_weight_b(head_b);
-	while (i <= ft_lstsize(head_b))
+	weight_a = ft_weight_a(*head_a, *head_b);
+	weight_b = ft_weight_b(*head_b);
+	while (i < ft_lstsize(*head_b))
 	{
 		if (weight_a[i] >= 0 && weight_b[i] >= 0)
 		{
@@ -190,7 +190,7 @@ void	ft_algoritmo(t_list *head_a, t_list *head_b)
 	min_wei = ft_abs(total[0]);
 	pos = 0;
 	i = 0;
-	while (i < ft_lstsize(head_b))
+	while (i < ft_lstsize(*head_b))
 	{
 		if(ft_abs(total[i]) < min_wei)
 		{
@@ -232,14 +232,15 @@ int main(int ac, char **av)
 		ft_pb(&head_a, &head_b);
 	while (head_b)
 	{
-		ft_lstprint(head_a, head_b);
-		ft_algoritmo(head_a, head_b);
+		//ft_lstprint(head_a, head_b);
+		ft_algoritmo(&head_a, &head_b);
 		//head_b = head_b->next;
 	}
 
 
-
-	ft_lstprint(head_a, head_b);
+	//ft_lstprint(head_a, head_b);
+	tidy_up(&head_a);
+	//ft_lstprint(head_a, head_b);
 	/*if (head_b)
 	while (1)
 	{

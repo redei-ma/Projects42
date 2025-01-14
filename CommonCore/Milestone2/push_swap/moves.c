@@ -17,6 +17,29 @@ int	check_finish(t_list *head_a, t_list *head_b)
 	return (1);
 }
 
+void tidy_up(t_list **head_a)
+{
+	t_list	*tmp_a;
+	int	min;
+	int	n;
+	int	i;
+	int	size;
+
+	tmp_a = *head_a;
+	size = ft_lstsize(tmp_a);
+	min = ft_minor(tmp_a);
+	n = pos_calc(tmp_a, min, size);
+	while (i < n)
+	{
+		if (n <= size / 2)
+			ft_ra(&tmp_a);
+		else
+		 	ft_rra(&tmp_a);
+		i++;
+	}
+	*head_a = tmp_a;
+}
+
 /*
 int	check_finish_2(t_list *head_a, t_list *head_b)
 {
@@ -141,42 +164,42 @@ int	ft_minor(t_list *head)
 	return (min);
 }
 
-void	make_move(int pos, int *moves, t_list *head_a, t_list *head_b)
+void	make_move(int pos, int *moves, t_list **head_a, t_list **head_b)
 {
-	while (moves[0] != 0 && moves[1] != 0)
+	while (moves[0] != 0 || moves[1] != 0)
 	{
 		if (moves[0] > 0 && moves[1] > 0)
 		{
-			ft_rr(&head_a, &head_b);
+			ft_rr(head_a, head_b);
 			moves[0]--;
 			moves[1]--;
 		}
 		else if (moves[0] < 0 && moves[1] < 0)
 		{
-			ft_rrr(&head_a, &head_b);
+			ft_rrr(head_a, head_b);
 			moves[0]++;
 			moves[1]++;
 		}
 		if(moves[0] > 0)
 		{
-			ft_ra(&head_a);
+			ft_ra(head_a);
 			moves[0]--;
 		}
 		else if (moves[0] < 0)
 		{
-			ft_rra(&head_a);
+			ft_rra(head_a);
 			moves[0]++;
 		}
 		if(moves[1] > 0)
 		{
-			ft_ra(&head_b);
+			ft_ra(head_b);
 			moves[1]--;
 		}
 		else if (moves[1] < 0)
 		{
-			ft_rra(&head_b);
+			ft_rra(head_b);
 			moves[1]++;
 		}
 	}
-	ft_pa(&head_a, &head_b);
+	ft_pa(head_a, head_b);
 }
