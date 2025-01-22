@@ -32,7 +32,6 @@ void	ft_rra(t_list **head_a);
 void	ft_rrb(t_list **head_b);
 void	ft_rrr(t_list **head_a, t_list **head_b);
 
-
 int		check_finish(t_list *head_a, t_list *head_b);
 void	tidy_up(t_list **head_a);
 int		*ft_weight_b(t_list *head_b);
@@ -41,7 +40,8 @@ int		pos_calc(t_list	*head, int num, int size);
 int		ft_minor(t_list *head);
 void	make_move(int *moves, t_list **head_a, t_list **head_b);
 
-
+int	max_ord_seq(t_list **head_a);
+t_list	*circular_lst(t_list **head);
 
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
