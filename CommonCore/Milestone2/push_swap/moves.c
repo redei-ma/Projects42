@@ -13,58 +13,35 @@ int	check_finish(t_list *head_a, t_list *head_b)
 				return (0);
 			tmp_a = tmp_a->next;
 		}
+		return (1);
 	}
-	return (1);
+	else
+		return (0);
 }
 
 void tidy_up(t_list **head_a)
 {
-	t_list	*tmp_a;
 	int	min;
-	int	n;
+	int	pos;
 	int	i;
 	int	size;
 
-	tmp_a = *head_a;
-	size = ft_lstsize(tmp_a);
-	min = ft_minor(tmp_a);
-	n = pos_calc(tmp_a, min, size);
-	while (i < n)
+	i = 0;
+	size = ft_lstsize(*head_a);
+	min = ft_minor(*head_a);
+	pos = pos_calc(*head_a, min, size);
+	while (i < ft_abs(pos))
 	{
-		if (n <= size / 2)
-			ft_ra(&tmp_a);
+		if (pos > 0)
+			ft_ra(head_a);
 		else
-		 	ft_rra(&tmp_a);
+		 	ft_rra(head_a);
 		i++;
 	}
-	*head_a = tmp_a;
 }
-
-/*
-int	check_finish_2(t_list *head_a, t_list *head_b)
-{
-	t_list	*tmp_a;
-	t_list		*min;
-
-	tmp_a = head_a;
-	min = tmp_a;
-	if (!head_b)
-	{
-		while (tmp_a && tmp_a->next)
-		{
-			if (min->value > tmp_a->next->value)
-				min->value = tmp_a->next->value;
-			tmp_a = tmp_a->next;
-		}
-		tmp_a = head_a;
-		
-	}
-	return (1);
-}
-*/
 
 int *ft_weight_b(t_list *head_b)
-{
+{git@github.com:redei-ma/WorkInProgress.git
 	int	*weight;
 	int i;
 	int	size;
@@ -73,11 +50,10 @@ int *ft_weight_b(t_list *head_b)
 	i = 0;
 	weight = ft_calloc(size, sizeof(int));
 	if (!weight)
-		return (0);
+		return (NULL);
 	while (i <= size / 2)
 	{
 		weight[i] = i;
-		//printf("%i\n", weight[i]);
 		i++;
 	}
 	while (i < size)
@@ -97,7 +73,9 @@ int *ft_weight_a(t_list *head_a, t_list *head_b)
 	int size_a;
 
 	size_a = ft_lstsize(head_a);
-	weight = ft_calloc(ft_lstsize(head_b), sizeof(int));
+	weight = (int *)ft_calloc(ft_lstsize(head_b), sizeof(int));
+	if (!weight)
+		return (NULL);
 	tmp_b = head_b;
 	i = 0;
 	while (tmp_b)
@@ -132,7 +110,6 @@ int	pos_calc(t_list	*head, int num, int size)
 {
 	t_list *tmp;
 	int	i;
-	int	nm;
 
 	tmp = head;
 	i = 0;
@@ -164,7 +141,7 @@ int	ft_minor(t_list *head)
 	return (min);
 }
 
-void	make_move(int pos, int *moves, t_list **head_a, t_list **head_b)
+void	make_move(int *moves, t_list **head_a, t_list **head_b)
 {
 	while (moves[0] != 0 || moves[1] != 0)
 	{
@@ -192,12 +169,12 @@ void	make_move(int pos, int *moves, t_list **head_a, t_list **head_b)
 		}
 		if(moves[1] > 0)
 		{
-			ft_ra(head_b);
+			ft_rb(head_b);
 			moves[1]--;
 		}
 		else if (moves[1] < 0)
 		{
-			ft_rra(head_b);
+			ft_rrb(head_b);
 			moves[1]++;
 		}
 	}

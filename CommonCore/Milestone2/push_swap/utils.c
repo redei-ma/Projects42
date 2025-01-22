@@ -36,3 +36,41 @@ void	*ft_memset(void *s, int c, size_t n)
 	}
 	return (s);
 }
+
+int	ft_lstsize(t_list *lst)
+{
+	t_list		*tmp;
+	int		count;
+
+	tmp = lst;
+	count = 0;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		count++;
+	}
+	return (count);
+}
+
+void	ft_lstprint(t_list *head_a, t_list *head_b)
+{
+	printf("A	B\n");
+	while (head_a || head_b)
+	{
+		if (head_a)
+		{
+			printf("%i", head_a->value);
+			head_a = head_a->next;
+		}
+		else
+			printf(" ");
+		printf("	");
+		if (head_b)
+		{
+			printf("%i\n", head_b->value);
+			head_b = head_b->next;
+		}
+		else
+			printf(" \n");
+	}
+}
