@@ -180,6 +180,31 @@ int	ft_algoritmo(t_list **head_a, t_list **head_b)
 	return (1);
 }
 
+int	max_ord_seq(t_list **head_a, t_list **head_b)
+{
+	t_list *tmp_a;
+	t_list *tmp_xa;
+	int	*max_seq;
+	int i;
+
+	max_seq = (int *)ft_calloc(ft_lstsize(*head_a), sizeof(int));
+	if (!max_seq)
+		return (0);
+	tmp_a = *head_a;
+	while (tmp_a)
+	{
+		tmp_xa = tmp_a;
+		i = 0;
+		while (i < ft_lstsize(*head_a))
+		{
+			if (tmp_xa)
+			i++;
+			tmp_xa = tmp_xa -> next;
+		}
+		tmp_a = tmp_a -> next;
+	}
+}
+
 int main(int ac, char **av)
 {
 	t_list *head_a;
@@ -201,11 +226,10 @@ int main(int ac, char **av)
 		return (write(1, "Alredy sorted\n", 14) && 0); //capire se va bene stampre se sono gia in ordine o fa righe e risulta un problema
 	}
 	size = ft_lstsize(head_a);
-/*	if (size <= 2)
-	{
-		if (head_a-> value > head_a->next->value)
-			ft_sa(&head_a);
-	}*/
+
+	max_ord_seq(&head_a, &head_b);
+	// controllare il ritorno se fallisce malloc
+
 	while (size-- > 2)
 		ft_pb(&head_a, &head_b);
 	while (head_b)

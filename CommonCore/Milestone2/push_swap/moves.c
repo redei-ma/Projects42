@@ -41,7 +41,7 @@ void tidy_up(t_list **head_a)
 }
 
 int *ft_weight_b(t_list *head_b)
-{git@github.com:redei-ma/WorkInProgress.git
+{
 	int	*weight;
 	int i;
 	int	size;
