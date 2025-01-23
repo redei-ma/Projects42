@@ -202,7 +202,7 @@ int main(int ac, char **av)
 	}
 	size = ft_lstsize(head_a);
 
-	//max_arr(&head_a, &head_b);
+	int *arr = max_arr(&head_a, &head_b);
 	// controllare il ritorno se fallisce malloc
 
 	while (size-- > 2)
