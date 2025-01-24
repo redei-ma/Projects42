@@ -157,7 +157,7 @@ void	make_move(int *moves, t_list **head_a, t_list **head_b)
 			moves[0]++;
 			moves[1]++;
 		}
-		if(moves[0] > 0)
+		else if(moves[0] > 0)
 		{
 			ft_ra(head_a);
 			moves[0]--;
@@ -167,7 +167,7 @@ void	make_move(int *moves, t_list **head_a, t_list **head_b)
 			ft_rra(head_a);
 			moves[0]++;
 		}
-		if(moves[1] > 0)
+		else if(moves[1] > 0)
 		{
 			ft_rb(head_b);
 			moves[1]--;
