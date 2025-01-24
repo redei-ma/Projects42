@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:34:31 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/01/24 19:04:35 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/01/24 19:23:20 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,10 @@ int	main(int ac, char **av)
 	while (size-- > 2)
 		ft_pb(&head_a, &head_b);
 	while (head_b)
-	{
 		ft_algo(&head_a, &head_b);
-		//ft_lstprint(head_a, head_b);
-	}
 	tidy_up(&head_a);
 	if (check_finish(head_a, head_b) == 0)
 		write(2, "Erorr function\n", 15);
-	//ft_lstprint(head_a, head_b);
 	ft_freelst(&head_a, &head_b);
 	return (0);
 }
