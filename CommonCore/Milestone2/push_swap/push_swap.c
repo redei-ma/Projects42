@@ -201,10 +201,6 @@ int main(int ac, char **av)
 		return (write(1, "Alredy sorted\n", 14) && 0);
 	}
 	size = ft_lstsize(head_a);
-
-	int *arr = max_arr(&head_a, &head_b);
-	// controllare il ritorno se fallisce malloc
-
 	while (size-- > 2)
 		ft_pb(&head_a, &head_b);
 	while (head_b)
