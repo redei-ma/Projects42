@@ -6,15 +6,15 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 12:42:02 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/01/24 13:12:03 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:51:27 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_rra(t_list **head_a)
+void	ft_rra(t_node **head_a)
 {
-	t_list	*tmp;
+	t_node	*tmp;
 
 	if ((*head_a) && (*head_a)->next)
 	{
@@ -30,9 +30,9 @@ void	ft_rra(t_list **head_a)
 	}
 }
 
-void	ft_rrb(t_list **head_b)
+void	ft_rrb(t_node **head_b)
 {
-	t_list	*tmp;
+	t_node	*tmp;
 
 	if ((*head_b) && (*head_b)->next)
 	{
@@ -48,9 +48,9 @@ void	ft_rrb(t_list **head_b)
 	}
 }
 
-void	ft_rrr(t_list **head_a, t_list **head_b)
+void	ft_rrr(t_node **head_a, t_node **head_b)
 {
-	t_list	*tmp;
+	t_node	*tmp;
 
 	if ((*head_a) && (*head_a)->next && (*head_b) && (*head_b)->next)
 	{

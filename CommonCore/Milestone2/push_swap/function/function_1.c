@@ -6,13 +6,13 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 12:42:02 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/01/24 13:11:02 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:51:14 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sa(t_list **head_a)
+void	ft_sa(t_node **head_a)
 {
 	int	tmp;
 
@@ -25,7 +25,7 @@ void	ft_sa(t_list **head_a)
 	}
 }
 
-void	ft_sb(t_list **head_b)
+void	ft_sb(t_node **head_b)
 {
 	int	tmp;
 
@@ -38,7 +38,7 @@ void	ft_sb(t_list **head_b)
 	}
 }
 
-void	ft_ss(t_list **head_a, t_list **head_b)
+void	ft_ss(t_node **head_a, t_node **head_b)
 {
 	int	tmp;
 

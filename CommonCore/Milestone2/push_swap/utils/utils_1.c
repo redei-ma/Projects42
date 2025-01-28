@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:24:50 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/01/24 13:36:24 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:52:26 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_minor(t_list *head)
+int	ft_minor(t_node *head)
 {
 	int		min;
-	t_list	*tmp;
+	t_node	*tmp;
 
 	tmp = head;
 	min = tmp->value;
@@ -28,9 +28,9 @@ int	ft_minor(t_list *head)
 	return (min);
 }
 
-int	check_finish(t_list *head_a, t_list *head_b)
+int	check_finish(t_node *head_a, t_node *head_b)
 {
-	t_list	*tmp_a;
+	t_node	*tmp_a;
 
 	tmp_a = head_a;
 	if (!head_b)
@@ -81,10 +81,10 @@ int	ft_natoi(char *str)
 	return (sign * n);
 }
 
-int	checkduplicate(t_list *lst)
+int	checkduplicate(t_node *lst)
 {
-	t_list	*node;
-	t_list	*test;
+	t_node	*node;
+	t_node	*test;
 
 	node = lst;
 	while (node)

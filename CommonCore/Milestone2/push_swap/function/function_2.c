@@ -6,15 +6,15 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 12:42:02 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/01/24 13:11:37 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:51:18 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_pa(t_list **head_a, t_list **head_b)
+void	ft_pa(t_node **head_a, t_node **head_b)
 {
-	t_list	*tmp;
+	t_node	*tmp;
 
 	if (*head_b)
 	{
@@ -38,9 +38,9 @@ void	ft_pa(t_list **head_a, t_list **head_b)
 	write(1, "pa\n", 3);
 }
 
-void	ft_pb(t_list **head_a, t_list **head_b)
+void	ft_pb(t_node **head_a, t_node **head_b)
 {
-	t_list	*tmp;
+	t_node	*tmp;
 
 	if (*head_a)
 	{

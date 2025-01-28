@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algoritmo_1.c                                      :+:      :+:    :+:   */
+/*   algorithm_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 12:51:29 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/01/24 19:37:29 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:37:40 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_weight_b(t_list *head_b, int i)
+int	ft_weight_b(t_node *head_b, int i)
 {
 	int		weight;
 	int		size_b;
 
-	size_b = ft_lstsize(head_b) + i;
+	weight = 0;
+	size_b = ft_lstsize_push(head_b) + i;
 	if (i <= size_b / 2)
 		weight = i;
 	else if (i < size_b)
@@ -25,10 +26,10 @@ int	ft_weight_b(t_list *head_b, int i)
 	return (weight);
 }
 
-int	ft_weight_a(t_list *head_a, int val_b)
+int	ft_weight_a(t_node *head_a, int val_b)
 {
 	int		weight;
-	t_list	*tmp_a;
+	t_node	*tmp_a;
 
 	tmp_a = head_a;
 	while (tmp_a)
@@ -38,27 +39,27 @@ int	ft_weight_a(t_list *head_a, int val_b)
 			if (val_b > tmp_a->value && val_b < tmp_a->next->value)
 			{
 				weight = pos_calc(head_a, tmp_a->next->value,
-						ft_lstsize(head_a));
+						ft_lstsize_push(head_a));
 				break ;
 			}
 		}
 		else if (val_b > tmp_a->value && val_b < head_a->value)
 		{
-			weight = pos_calc(head_a, head_a->value, ft_lstsize(head_a));
+			weight = pos_calc(head_a, head_a->value, ft_lstsize_push(head_a));
 			break ;
 		}
 		tmp_a = tmp_a->next;
 	}
 	if (tmp_a == NULL)
-		weight = pos_calc(head_a, ft_minor(head_a), ft_lstsize(head_a));
+		weight = pos_calc(head_a, ft_minor(head_a), ft_lstsize_push(head_a));
 	return (weight);
 }
 
-void	ft_algo(t_list **head_a, t_list **head_b)
+void	ft_algo(t_node **head_a, t_node **head_b)
 {
 	int		moves[3];
 	int		i;
-	t_list	*tmp_b;
+	t_node	*tmp_b;
 
 	tmp_b = *head_b;
 	i = 0;
@@ -72,7 +73,7 @@ void	ft_algo(t_list **head_a, t_list **head_b)
 	make_move(moves, head_a, head_b);
 }
 
-void	ft_weight_tot(t_list **head_a, t_list **head_b, int *moves, int i)
+void	ft_weight_tot(t_node **head_a, t_node **head_b, int *moves, int i)
 {
 	int	tmp_moves[3];
 

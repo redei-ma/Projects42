@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_lst.c                                        :+:      :+:    :+:   */
+/*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:30:38 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/01/24 14:25:35 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:37:03 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_freelst(t_list **head_a, t_list **head_b)
+int	ft_freelst(t_node **head_a, t_node **head_b)
 {
-	t_list	*tmp;
+	t_node	*tmp;
 
 	while (*head_a)
 	{
@@ -33,15 +33,15 @@ int	ft_freelst(t_list **head_a, t_list **head_b)
 	return (0);
 }
 
-t_list	*ft_nlstnew(char *av)
+t_node	*ft_nlstnew(char *av)
 {
 	int		content;
-	t_list	*node;
+	t_node	*node;
 
 	content = ft_natoi(av);
 	if (content == 0 && !(av[0] == '0' && av[1] == '\0'))
 		return (NULL);
-	node = (t_list *)ft_calloc(1, sizeof(t_list));
+	node = (t_node *)ft_calloc(1, sizeof(t_node));
 	if (!node)
 		return (NULL);
 	node -> value = content;
@@ -50,12 +50,12 @@ t_list	*ft_nlstnew(char *av)
 	return (node);
 }
 
-t_list	*ft_lstcreation(char **av)
+t_node	*ft_lstcreation(char **av)
 {
 	int		i;
-	t_list	*node;
-	t_list	*prev_node;
-	t_list	*begin;
+	t_node	*node;
+	t_node	*prev_node;
+	t_node	*begin;
 
 	i = 1;
 	node = NULL;
@@ -75,4 +75,19 @@ t_list	*ft_lstcreation(char **av)
 		i++;
 	}
 	return (begin);
+}
+
+int	ft_lstsize_push(t_node *lst)
+{
+	int		count;
+	t_node	*tmp;
+
+	tmp = lst;
+	count = 0;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		count++;
+	}
+	return (count);
 }

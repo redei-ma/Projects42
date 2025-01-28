@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algoritmo_2.c                                      :+:      :+:    :+:   */
+/*   algorithm_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 12:43:32 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/01/24 19:32:47 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:37:29 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	tidy_up(t_list **head_a)
+void	tidy_up(t_node **head_a)
 {
 	int	min;
 	int	pos;
@@ -20,7 +20,7 @@ void	tidy_up(t_list **head_a)
 	int	size;
 
 	i = 0;
-	size = ft_lstsize(*head_a);
+	size = ft_lstsize_push(*head_a);
 	min = ft_minor(*head_a);
 	pos = pos_calc(*head_a, min, size);
 	while (i < ft_abs(pos))
@@ -33,10 +33,10 @@ void	tidy_up(t_list **head_a)
 	}
 }
 
-int	pos_calc(t_list	*head, int num, int size)
+int	pos_calc(t_node	*head, int num, int size)
 {
 	int		i;
-	t_list	*tmp;
+	t_node	*tmp;
 
 	tmp = head;
 	i = 0;
