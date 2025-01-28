@@ -41,7 +41,7 @@ $(NAME_BONUS): $(LIBFT_DIR)/libft.a $(OBJS) $(OBJS_BONUS) ./bonus/checker.o
 	@$(CC) $(CFLAGS) -I$(CURDIR) -I$(LIBFT_DIR) -c $< -o $@
 
 clean:
-	@rm -rf $(OBJS) $(OBJS_BONUS) push_swap.o checker.o
+	@rm -rf $(OBJS) $(OBJS_BONUS) push_swap.o ./bonus/checker.o
 	@$(MAKE) -C $(LIBFT_DIR) clean --quiet
 
 fclean: clean

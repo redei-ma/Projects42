@@ -19,7 +19,7 @@ int	main(int ac, char **av)
 	t_node	*head_b;
 
 	if (ac < 2)
-		return (write(2, "Too few arguments\n", 18));
+		return (1);
 	head_a = ft_lstcreation(av);
 	head_b = NULL;
 	if (!head_a || checkduplicate(head_a) == 0)

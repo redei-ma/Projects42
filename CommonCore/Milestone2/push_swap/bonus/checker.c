@@ -48,7 +48,7 @@ int	main(int ac, char **av)
 	int		check[1];
 
 	if (ac < 2)
-		return (write(2, "Too few arguments\n", 18));
+		return (1);
 	head_a = ft_lstcreation(av);
 	head_b = NULL;
 	check[0] = 0;
