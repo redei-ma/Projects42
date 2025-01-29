@@ -56,10 +56,8 @@ int	ft_puthex(long long n, char c)
 {
 	char	*base;
 	int		i;
-	int		check_ptr;
 
 	i = 0;
-	check_ptr = 0;
 	if (c == 'X')
 		base = "0123456789ABCDEF";
 	else
