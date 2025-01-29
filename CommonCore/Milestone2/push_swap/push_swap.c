@@ -33,7 +33,7 @@ int	main(int ac, char **av)
 		ft_algo(&head_a, &head_b);
 	tidy_up(&head_a);
 	if (check_finish(head_a, head_b) == 0)
-		write(2, "Erorr function\n", 15);
+		write(2, "Erorr\n", 6);
 	ft_freelst(&head_a, &head_b);
 	return (0);
 }
