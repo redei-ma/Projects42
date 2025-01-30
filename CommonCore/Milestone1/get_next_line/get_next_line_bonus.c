@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 16:37:58 by redei-ma          #+#    #+#             */
-/*   Updated: 2024/12/05 17:05:43 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:22:04 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,16 @@ char	*find_newline(char **str)
 	{
 		fin = ft_substr(*str, 0, i + 1);
 		tmp = ft_substr(*str, i + 1, ft_strlen(*str) - i - 1);
-		free(*str);
-		*str = tmp;
-		if (!(*str) || ft_strlen(*str) == 0)
+		if (!fin || !tmp)
 		{
+			free(fin);
+			free(tmp);
 			free(*str);
 			*str = NULL;
+			return (NULL);
 		}
+		free(*str);
+		*str = tmp;
 	}
 	else
 		fin = NULL;
@@ -68,7 +71,7 @@ int	read_line(char **s, int fd)
 	return (bytes_read);
 }
 
-char	*test(char **leftovers, char *final, int bytes)
+char	*test(char **leftovers, char **final, int bytes)
 {
 	if (bytes < 0)
 	{
@@ -80,9 +83,9 @@ char	*test(char **leftovers, char *final, int bytes)
 	{
 		if (*leftovers && ft_strlen(*leftovers) > 0)
 		{
-			final = *leftovers;
+			*final = *leftovers;
 			*leftovers = NULL;
-			return (final);
+			return (*final);
 		}
 		free(*leftovers);
 		*leftovers = NULL;
@@ -108,9 +111,11 @@ char	*get_next_line(int fd)
 		final = find_newline(&leftovers[fd]);
 		if (final)
 			return (final);
+		if (!leftovers[fd])
+			return (NULL);
 		bytes = read_line(&leftovers[fd], fd);
 		if (bytes <= 0)
-			return (test(&leftovers[fd], final, bytes));
+			return (test(&leftovers[fd], &final, bytes));
 	}
 }
 

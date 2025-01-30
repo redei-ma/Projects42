@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 16:38:17 by redei-ma          #+#    #+#             */
-/*   Updated: 2024/12/12 12:52:25 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:20:13 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,16 @@ char	*find_newline(char **str)
 	{
 		fin = ft_substr(*str, 0, i + 1);
 		tmp = ft_substr(*str, i + 1, ft_strlen(*str) - i - 1);
-		free(*str);
-		*str = tmp;
-		if (!(*str) || ft_strlen(*str) == 0)
+		if (!fin || !tmp)
 		{
+			free(fin);
+			free(tmp);
 			free(*str);
 			*str = NULL;
+			return (NULL);
 		}
+		free(*str);
+		*str = tmp;
 	}
 	else
 		fin = NULL;
@@ -108,6 +111,8 @@ char	*get_next_line(int fd)
 		final = find_newline(&leftovers);
 		if (final)
 			return (final);
+		if (!leftovers)
+			return (NULL);
 		bytes = read_line(&leftovers, fd);
 		if (bytes <= 0)
 			return (test(&leftovers, &final, bytes));
@@ -123,7 +128,7 @@ char	*get_next_line(int fd)
         fprintf(stderr, "Usage: %s <file1>\n", argv[0]);
         return (EXIT_FAILURE);
     }    // Apertura del primo file
-    fd1 = open(argv[1], O_RDONLY);
+    fd1 = -1;
     if (fd1 < 0)
     {
         perror("Error opening file 1");

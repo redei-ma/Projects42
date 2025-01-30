@@ -21,6 +21,7 @@
 
 char	*find_newline(char **str);
 int		read_line(char **s, int fd);
+char	*test(char **leftovers, char **final, int bytes);
 char	*get_next_line(int fd);
 
 #endif
