@@ -1,7 +1,7 @@
 NAME = push_swap
 NAME_BONUS = checker
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 SRCS =  ./algorithm/algorithm_1.c \
 		./algorithm/algorithm_2.c \
@@ -31,8 +31,8 @@ $(LIBFT_DIR)/libft.a:
 
 $(NAME): $(LIBFT_DIR)/libft.a $(OBJS) push_swap.o
 	@echo "Compiling $(NAME)..."
-	@$(CC) $(CFLAGS) $(OBJS) push_swap.o $(LIBFT_DIR)/libft.a  -o $(NAME)
-	
+	@$(CC) $(CFLAGS) $(OBJS) push_swap.o $(LIBFT_DIR)/libft.a -o $(NAME)
+
 $(NAME_BONUS): $(LIBFT_DIR)/libft.a $(OBJS) $(OBJS_BONUS) ./bonus/checker.o
 	@echo "Compiling $(NAME_BONUS)..."
 	@$(CC) $(CFLAGS) $(OBJS) $(OBJS_BONUS) ./bonus/checker.o $(LIBFT_DIR)/libft.a -o $(NAME_BONUS)

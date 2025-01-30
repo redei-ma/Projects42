@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:30:38 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/01/28 16:37:03 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/01/30 13:12:49 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,16 @@ int	ft_freelst(t_node **head_a, t_node **head_b)
 		free(tmp);
 	}
 	*head_a = NULL;
-	while (*head_b)
+	if (head_b)
 	{
-		tmp = *head_b;
-		*head_b = (*head_b)->next;
-		free(tmp);
+		while (*head_b)
+		{
+			tmp = *head_b;
+			*head_b = (*head_b)->next;
+			free(tmp);
+		}
+		*head_b = NULL;
 	}
-	*head_b = NULL;
 	return (0);
 }
 
@@ -59,12 +62,13 @@ t_node	*ft_lstcreation(char **av)
 
 	i = 1;
 	node = NULL;
+	begin = NULL;
 	while (av[i])
 	{
 		prev_node = node;
 		node = ft_nlstnew(av[i]);
 		if (!node)
-			return (NULL);
+			return (ft_freelst(&begin, NULL), NULL);
 		if (i == 1)
 			begin = node;
 		else

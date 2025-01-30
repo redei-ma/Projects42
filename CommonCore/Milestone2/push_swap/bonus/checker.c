@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:08:39 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/01/28 17:25:59 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:52:57 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,16 @@ int	custom_move(t_node **head_a, t_node **head_b, char *line, int *check)
 		return (ft_rrotate(head_b));
 	else if (ft_strncmp(line, "rrr\n", 4) == 0)
 		return (ft_rrotate_double(head_a, head_b));
-	check[0] = write(2, "Error\n", 6);
+	*check = write(2, "Error\n", 6);
 	return (0);
+}
+
+void	write_finish(t_node *head_a, t_node *head_b)
+{
+	if (check_finish(head_a, head_b) == 0)
+		write(2, "KO\n", 3);
+	else
+		write(1, "OK\n", 3);
 }
 
 int	main(int ac, char **av)
@@ -45,26 +53,26 @@ int	main(int ac, char **av)
 	char	*line;
 	t_node	*head_a;
 	t_node	*head_b;
-	int		check[1];
+	int		check;
 
 	if (ac < 2)
 		return (1);
 	head_a = ft_lstcreation(av);
 	head_b = NULL;
-	check[0] = 0;
-	if (!head_a || checkduplicate(head_a) == 0)
-		return (ft_freelst(&head_a, &head_b) & write(2, "Error\n", 6));
+	check = 0;
+	if (!head_a)
+		return (write(2, "Error\n", 6));
+	if (checkduplicate(head_a) == 0)
+		return (ft_freelst(&head_a, &head_b), write(2, "Error\n", 6));
 	line = get_next_line(0);
-	while (line && custom_move(&head_a, &head_b, line, check))
+	while (line && custom_move(&head_a, &head_b, line, &check))
 	{
 		free(line);
 		line = get_next_line(0);
 	}
 	free(line);
-	if (check_finish(head_a, head_b) == 0 && check[0] == 0)
-		write(2, "KO\n", 3);
-	else if (check_finish(head_a, head_b) != 0 && check[0] == 0)
-		write(1, "OK\n", 3);
+	if (check == 0)
+		write_finish(head_a, head_b);
 	ft_freelst(&head_a, &head_b);
 	return (0);
 }
