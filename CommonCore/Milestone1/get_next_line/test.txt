@@ -1,0 +1,8 @@
+11111
+1CEP1
+11111
+
+
+attenzione quando predno la mappa ad aggiungere io il \n nell'ultima riga
+
+dimensione 48x48

@@ -1,7 +1,7 @@
 NAME = push_swap
 NAME_BONUS = checker
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 SRCS =  ./algorithm/algorithm_1.c \
 		./algorithm/algorithm_2.c \
@@ -21,9 +21,11 @@ OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 LIBFT_DIR = ./libft
 
-all: $(NAME)
+normal: $(NAME)
 
 bonus: $(NAME_BONUS)
+
+all: $(NAME) $(NAME_BONUS)
 
 $(LIBFT_DIR)/libft.a:
 	@echo "Compiling libft..."
