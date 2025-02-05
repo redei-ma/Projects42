@@ -17,6 +17,7 @@
 #  define BUFFER_SIZE 5
 # endif
 
+# include <fcntl.h>
 # include "libft.h"
 
 #endif

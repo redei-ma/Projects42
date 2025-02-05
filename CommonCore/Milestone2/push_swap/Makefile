@@ -20,6 +20,7 @@ OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 LIBFT_DIR = ./libft
+LIBFT = ./libft/libft.a
 
 normal: $(NAME)
 
@@ -27,17 +28,17 @@ bonus: $(NAME_BONUS)
 
 all: $(NAME) $(NAME_BONUS)
 
-$(LIBFT_DIR)/libft.a:
+$(LIBFT):
 	@echo "Compiling libft..."
 	@$(MAKE) -C $(LIBFT_DIR) --quiet
 
-$(NAME): $(LIBFT_DIR)/libft.a $(OBJS) push_swap.o
+$(NAME): $(LIBFT) $(OBJS) push_swap.o
 	@echo "Compiling $(NAME)..."
-	@$(CC) $(CFLAGS) $(OBJS) push_swap.o $(LIBFT_DIR)/libft.a -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) push_swap.o $(LIBFT) -o $(NAME)
 
-$(NAME_BONUS): $(LIBFT_DIR)/libft.a $(OBJS) $(OBJS_BONUS) ./bonus/checker.o
+$(NAME_BONUS): $(LIBFT) $(OBJS) $(OBJS_BONUS) ./bonus/checker.o
 	@echo "Compiling $(NAME_BONUS)..."
-	@$(CC) $(CFLAGS) $(OBJS) $(OBJS_BONUS) ./bonus/checker.o $(LIBFT_DIR)/libft.a -o $(NAME_BONUS)
+	@$(CC) $(CFLAGS) $(OBJS) $(OBJS_BONUS) ./bonus/checker.o $(LIBFT) -o $(NAME_BONUS)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -I$(CURDIR) -I$(LIBFT_DIR) -c $< -o $@
@@ -52,5 +53,5 @@ fclean: clean
 
 re: fclean all
 
-.SILENT: all clean fclean re bonus
-.PHONY: all clean fclean re bonus
+.SILENT: normal all clean fclean re bonus
+.PHONY: normal all clean fclean re bonus
