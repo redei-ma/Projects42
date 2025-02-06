@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:52:12 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/01/28 16:01:19 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/02/06 12:13:32 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <ctype.h>
 # include <limits.h>
 # include <stdint.h>
+# include <fcntl.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {

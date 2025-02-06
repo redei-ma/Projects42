@@ -6,11 +6,11 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 12:32:01 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/01/27 17:17:32 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/02/06 12:11:55 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 int	ft_check(char c, va_list params)
 {

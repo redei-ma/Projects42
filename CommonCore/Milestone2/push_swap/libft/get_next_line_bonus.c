@@ -6,11 +6,11 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 16:37:58 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/01/27 17:17:23 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/02/06 12:12:19 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line_bonus.h"
 
 char	*find_newline(char **str)
 {
