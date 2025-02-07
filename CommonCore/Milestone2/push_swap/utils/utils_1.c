@@ -6,11 +6,12 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:24:50 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/01/28 15:52:26 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/02/07 17:11:26 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 int	ft_minor(t_node *head)
 {
@@ -76,9 +77,10 @@ int	ft_natoi(char *str)
 		n = n * 10 + (str[i] - '0');
 		i++;
 	}
+	n = sign * n;
 	if (n < INT_MIN || n > INT_MAX || str[i] != '\0')
 		n = 0;
-	return (sign * n);
+	return (n);
 }
 
 int	checkduplicate(t_node *lst)
