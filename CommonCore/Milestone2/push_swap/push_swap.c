@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:34:31 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/01/30 13:13:48 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/02/11 12:34:40 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ int	main(int ac, char **av)
 	if (check_finish(head_a, head_b) == 1)
 		return (ft_freelst(&head_a, &head_b));
 	size = ft_lstsize_push(head_a);
-	while (size-- > 2)
+	while (size-- > 3)
 		ft_pb(&head_a, &head_b);
+	sort_three(&head_a);
 	while (head_b)
 		ft_algo(&head_a, &head_b);
 	tidy_up(&head_a);

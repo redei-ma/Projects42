@@ -6,11 +6,28 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:22:53 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/01/28 15:51:06 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/02/11 12:58:25 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
+
+void	sort_three(t_node **head_a)
+{
+	t_node	*tmp;
+
+	tmp = *head_a;
+	if (tmp->value > tmp->next->value && tmp->value < tmp->next->next->value)
+		return (ft_sa(head_a));
+	else if (tmp->value < tmp->next->value
+		&& tmp->value < tmp->next->next->value)
+		return (ft_ra(head_a), ft_sa(head_a));
+	else if (tmp->value > tmp->next->value
+		&& tmp->next->value > tmp->next->next->value)
+		return (ft_sa(head_a));
+	else
+		return ;
+}
 
 void	make_move(int *moves, t_node **head_a, t_node **head_b)
 {
