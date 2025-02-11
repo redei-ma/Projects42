@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 16:38:17 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/02/11 16:51:43 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:59:05 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ char	*find_newline(char **str)
 
 int	read_line(char **s, int fd)
 {
-	char		*buff;
-	char		*tmp;
-	ssize_t		bytes_read;
+	char	*buff;
+	char	*tmp;
+	ssize_t	bytes_read;
 
 	buff = (char *)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	if (!buff)

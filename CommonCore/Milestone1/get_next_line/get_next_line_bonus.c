@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 16:37:58 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/02/11 16:52:56 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:57:23 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	read_line(char **s, int fd)
 {
 	char	*buff;
 	char	*tmp;
-	int		bytes_read;
+	ssize_t	bytes_read;
 
 	buff = (char *)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	if (!buff)
