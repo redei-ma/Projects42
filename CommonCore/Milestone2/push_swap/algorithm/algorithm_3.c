@@ -6,11 +6,11 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:22:53 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/02/11 12:58:25 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:11:57 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 void	sort_three(t_node **head_a)
 {
