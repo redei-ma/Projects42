@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 16:38:17 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/01/30 17:20:13 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:51:43 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ int	read_line(char **s, int fd)
 	if (bytes_read > 0)
 	{
 		tmp = ft_strjoin(*s, buff);
+		if (!tmp)
+		{
+			free(buff);
+			return (-1);
+		}
 		free(*s);
 		*s = tmp;
 	}

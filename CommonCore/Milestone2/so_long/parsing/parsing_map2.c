@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:17:18 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/02/10 17:45:36 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:39:27 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,9 @@ int	check_size(char **map, int i, int j)
 	while (map[i])
 	{
 		k = 0;
-		while (map[i][k])
+		while (map[i][k] && map[i][k] != '\n')
 			k++;
-		if (k - 1 != j)
+		if (k != j)
 			return (0);
 		i++;
 	}

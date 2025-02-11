@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 MLXFLAGS = -lmlx -Lminilibx-linux -lXext -lX11 -lm -lz
 
-SRCS =	main.c \
+SRCS =	so_long.c \
 		parsing/parsing_map1.c \
 		parsing/parsing_map2.c \
 		parsing/parsing_map3.c \
