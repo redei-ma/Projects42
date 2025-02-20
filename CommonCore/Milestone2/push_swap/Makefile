@@ -54,3 +54,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: normal all clean fclean re bonus
+.SILENT:
