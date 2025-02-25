@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 19:27:47 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/02/21 17:30:31 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/02/25 16:25:18 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,12 +97,11 @@ void	set_piper(t_pipex **piper, int ac, char **av, char **envp)
 	(*piper)->ac = ac;
 	(*piper)->av = av;
 	(*piper)->envp = envp;
-	(*piper)->pids = NULL;
 	(*piper)->n_cmds = ac - 3;
-	(*piper)->fds = NULL;
 	(*piper)->n_pipes = ac - 4;
 	(*piper)->pids = ft_calloc((*piper)->n_cmds, sizeof(pid_t));
 	if (!(*piper)->pids)
 		exit_error("malloc failed", piper, NULL, NULL);
 	set_pipe(piper);
+	(*piper)->flag = 0;
 }

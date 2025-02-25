@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:11:42 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/02/24 17:12:55 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/02/25 16:20:24 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_pipex
 	int		**fds;
 	int		n_pipes;
 	int		i;
+	int		flag;
 }	t_pipex;
 
 void	execute(t_pipex **piper, char *av, char **envp);

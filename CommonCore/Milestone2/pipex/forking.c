@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 19:16:38 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/02/24 17:13:27 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/02/25 16:24:11 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ void	last_process(t_pipex **piper, int *fd)
 
 	safe_close(fd[1]);
 	pos = (*piper)->ac - 1;
-	fd_out = open((*piper)->av[pos], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if ((*piper)->flag == 1)
+		fd_out = open((*piper)->av[pos], O_WRONLY | O_CREAT | O_APPEND, 0644);
+	else
+		fd_out = open((*piper)->av[pos], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd_out == -1)
 	{
 		safe_close(fd[0]);

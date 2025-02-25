@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:55:43 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/02/24 17:13:50 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/02/25 16:21:40 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	run_heredoc(t_pipex **piper)
 	int	i;
 
 	i = 0;
+	(*piper)->flag = 1;
 	while (i < (*piper)->n_cmds)
 	{
 		(*piper)->pids[i] = fork();
