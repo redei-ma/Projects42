@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 16:37:58 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/02/11 16:57:23 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/02/25 12:21:48 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,25 @@ char	*find_newline(char **str)
 	int		i;
 
 	i = 0;
+	fin = NULL;
 	while ((*str)[i] && (*str)[i] != '\n')
 		i++;
 	if ((*str)[i] == '\n')
 	{
 		fin = ft_substr(*str, 0, i + 1);
-		tmp = ft_substr(*str, i + 1, ft_strlen(*str) - i - 1);
-		if (!fin || !tmp)
+		if (!fin)
+			return (free(*str), NULL);
+		if (i == (int)ft_strlen(*str) - 1)
+			tmp = NULL;
+		else
 		{
-			free(fin);
-			free(tmp);
-			free(*str);
-			*str = NULL;
-			return (NULL);
+			tmp = ft_substr(*str, i + 1, ft_strlen(*str) - i - 1);
+			if (!tmp)
+				return (free(fin), free(*str), NULL);
 		}
 		free(*str);
 		*str = tmp;
 	}
-	else
-		fin = NULL;
 	return (fin);
 }
 
