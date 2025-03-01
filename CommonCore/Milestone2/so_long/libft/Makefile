@@ -48,6 +48,8 @@ SRCS = ft_atoi.c \
 	ft_lstsize.c \
 	ft_printf.c \
 	ft_printf_utils.c \
+	ft_printfd.c \
+	ft_printfd_utils.c \
 	get_next_line_bonus.c
 
 OBJS = $(SRCS:.c=.o)

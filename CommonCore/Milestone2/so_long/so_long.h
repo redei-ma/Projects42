@@ -6,14 +6,12 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:14:31 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/02/10 17:01:02 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/03/01 16:43:26 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-
-//# define VALID_CHARS "01PEC"
 
 # include <stdbool.h>
 # include "libft/libft.h"

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game2.c                                            :+:      :+:    :+:   */
+/*   play2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:41:51 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/02/10 17:10:34 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/03/01 16:44:16 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	make_move(t_game *game, int new_x, int new_y)
 	}
 	if (game->map[new_y][new_x] == 'E' && game->collectibles == 0)
 	{
-		ft_printf("You won! Moves: %d\n", game->moves);
+		ft_printf("You won! Moves: %d\n", game->moves + 1);
 		close_game(game);
 	}
 	if (game->map[new_y][new_x] == 'E' && game->collectibles != 0)
