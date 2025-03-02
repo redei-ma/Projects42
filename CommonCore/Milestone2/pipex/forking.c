@@ -6,11 +6,24 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 19:16:38 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/02/25 16:24:11 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/03/02 17:51:09 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+char	*already_path(char *cmd)
+{
+	char	*path;
+
+	path = ft_strdup(cmd);
+	if (!path)
+		return (NULL);
+	if (access(cmd, F_OK) == 0)
+		return (path);
+	free(path);
+	return (NULL);
+}
 
 void	execute(t_pipex **piper, char *av, char **envp)
 {
@@ -20,7 +33,10 @@ void	execute(t_pipex **piper, char *av, char **envp)
 	cmd = ft_split(av, ' ');
 	if (!cmd)
 		exit_error("ft_split failed", piper, NULL, NULL);
-	path = get_path(cmd[0], envp);
+	if (cmd[0][0] == '/')
+		path = already_path(cmd[0]);
+	else
+		path = get_path(cmd[0], envp);
 	if (!path)
 		exit_error("cmd not found", piper, cmd, NULL);
 	execve(path, cmd, envp);

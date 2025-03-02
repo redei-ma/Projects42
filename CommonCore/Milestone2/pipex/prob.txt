@@ -1,2 +1,0 @@
-quando ti danno il path anche se non ce devo eseguirlo. vedi foto leonardo
-pero devo anche stafre atento che non setto il path da argv e poi cerco di freare che da double free

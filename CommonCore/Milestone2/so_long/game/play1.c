@@ -1,16 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game1.c                                            :+:      :+:    :+:   */
+/*   play1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 18:07:42 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/02/10 17:04:54 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:28:17 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	make_move(t_game *game, int new_x, int new_y)
+{
+	if (game->map[new_y][new_x] == 'C')
+		game->collectibles--;
+	if (game->map[new_y][new_x] == 'F')
+	{
+		ft_printf("You lose!\n");
+		close_game(game);
+	}
+	if (game->map[new_y][new_x] == 'E' && game->collectibles == 0)
+	{
+		ft_printf("You won! Moves: %d\n", game->moves + 1);
+		close_game(game);
+	}
+	if (game->map[new_y][new_x] == 'E' && game->collectibles != 0)
+		game->prev_tile = 'E';
+	if (game->prev_tile == 'E' && game->map[new_y][new_x] != 'E')
+	{
+		game->map[game->player_y][game->player_x] = 'E';
+		game->prev_tile = game->map[new_y][new_x];
+	}
+	else
+		game->map[game->player_y][game->player_x] = '0';
+}
 
 void	move_player(t_game *game, int dx, int dy)
 {
@@ -51,24 +76,6 @@ int	key_press(int keycode, t_game *game)
 	else if (keycode == 'd')
 		move_player(game, 1, 0);
 	return (0);
-}
-
-int	close_game(t_game *game)
-{
-	mlx_destroy_image(game->mlx, game->p_up_img);
-	mlx_destroy_image(game->mlx, game->p_down_img);
-	mlx_destroy_image(game->mlx, game->p_left_img);
-	mlx_destroy_image(game->mlx, game->p_right_img);
-	mlx_destroy_image(game->mlx, game->wall_img);
-	mlx_destroy_image(game->mlx, game->collect_img);
-	mlx_destroy_image(game->mlx, game->exit_img);
-	mlx_destroy_image(game->mlx, game->enemy_img1);
-	mlx_destroy_image(game->mlx, game->enemy_img2);
-	mlx_destroy_image(game->mlx, game->floor_img);
-	mlx_destroy_window(game->mlx, game->win);
-	mlx_destroy_display(game->mlx);
-	free_all(game);
-	exit(0);
 }
 
 void	setup_hooks(t_game *game)

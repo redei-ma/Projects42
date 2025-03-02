@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:41:51 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/03/01 16:44:16 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:28:08 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,4 @@ int	animate_enemies(t_game *game)
 	}
 	print_moves(game);
 	return (0);
-}
-
-void	make_move(t_game *game, int new_x, int new_y)
-{
-	if (game->map[new_y][new_x] == 'C')
-		game->collectibles--;
-	if (game->map[new_y][new_x] == 'F')
-	{
-		ft_printf("You lose!\n");
-		close_game(game);
-	}
-	if (game->map[new_y][new_x] == 'E' && game->collectibles == 0)
-	{
-		ft_printf("You won! Moves: %d\n", game->moves + 1);
-		close_game(game);
-	}
-	if (game->map[new_y][new_x] == 'E' && game->collectibles != 0)
-		game->prev_tile = 'E';
-	if (game->prev_tile == 'E' && game->map[new_y][new_x] != 'E')
-	{
-		game->map[game->player_y][game->player_x] = 'E';
-		game->prev_tile = game->map[new_y][new_x];
-	}
-	else
-		game->map[game->player_y][game->player_x] = '0';
 }

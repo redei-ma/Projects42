@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:11:15 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/03/01 19:57:34 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:20:28 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,15 @@ int	init_game(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (!game->mlx)
-		return (0);
+		exit_error(game, "Failed to initialize mlx");
+	if (!check_display_size(*game))
+		exit_error(game, "Map is too big for the screen");
 	game->win = mlx_new_window(game->mlx, game->width * 48,
 			game->height * 48, "SO_LONG");
 	if (!game->win)
-		return (0);
+		exit_error(game, "Failed to create window");
 	if (!load_textures(game))
-		return (0);
+		exit_error(game, "Failed to load textures");
 	game->p_direct = 1;
 	game->prev_tile = '0';
 	game->moves = 0;

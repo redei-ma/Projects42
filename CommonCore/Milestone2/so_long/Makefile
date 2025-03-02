@@ -11,7 +11,8 @@ SRCS =	so_long.c \
 		game/display2.c \
 		game/play1.c \
 		game/play2.c \
-		utils/utils.c \
+		utils/utils1.c \
+		utils/utils2.c \
 		utils/flood_fill_dfs.c
 
 OBJS = $(SRCS:.c=.o)

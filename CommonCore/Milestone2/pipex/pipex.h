@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:11:42 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/02/25 16:20:24 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/03/02 17:50:02 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_pipex
 	int		flag;
 }	t_pipex;
 
+char	*already_path(char *cmd);
 void	execute(t_pipex **piper, char *av, char **envp);
 void	last_process(t_pipex **piper, int *fd);
 void	first_process(t_pipex **piper, int *fd);

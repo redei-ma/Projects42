@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:14:31 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/03/01 16:43:26 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:30:03 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,20 +79,24 @@ int		load_textures(t_game *game);
 int		init_game(t_game *game);
 
 void	put_player(t_game *game, int i, int j);
+int		check_display_size(t_game game);
 
+void	make_move(t_game *game, int new_x, int new_y);
 void	move_player(t_game *game, int dx, int dy);
 int		key_press(int keycode, t_game *game);
-int		close_game(t_game *game);
 void	setup_hooks(t_game *game);
 void	start_game(t_game *game);
 
 void	print_moves(t_game *game);
 int		animate_enemies(t_game *game);
-void	make_move(t_game *game, int new_x, int new_y);
 
 void	print_map(char **map);
 void	free_all(t_game *game);
 void	free_map(char **map);
+
+void	exit_error(t_game *game, char *msg);
+void	clear_libx(t_game *game);
+int		close_game(t_game *game);
 
 void	flood_fill_dfs(char **tab, t_point size, t_point begin, char *target);
 
