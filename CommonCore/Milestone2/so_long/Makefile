@@ -18,8 +18,10 @@ SRCS =	so_long.c \
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_DIR = ./libft
-LIBFT = ./libft/libft.a
+LIBFT = $(LIBFT_DIR)/libft.a
 MINILIBX_DIR = ./minilibx-linux
+MINILIBX = $(MINILIBX_DIR)/libmlx.a
+MLX_REPO = https://github.com/42Paris/minilibx-linux.git
 
 all: $(NAME)
 
@@ -27,11 +29,15 @@ $(LIBFT):
 	@echo "Compiling libft..."
 	@$(MAKE) -C $(LIBFT_DIR) --quiet
 
-$(MINILIBX_DIR)/libmlx.a:
+$(MINILIBX_DIR):
+	@echo "Cloning MinilibX..."
+	@git clone $(MLX_REPO) $(MINILIBX_DIR) --quiet
+
+$(MINILIBX): $(MINILIBX_DIR)
 	@echo "Compiling MinilibX..."
 	@$(MAKE) -C $(MINILIBX_DIR) --quiet
 
-$(NAME): $(LIBFT) $(MINILIBX_DIR)/libmlx.a $(OBJS)
+$(NAME): $(LIBFT) $(MINILIBX) $(OBJS)
 	@echo "Compiling $(NAME)..."
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLXFLAGS) -o $(NAME)
 
@@ -46,6 +52,7 @@ clean:
 fclean: clean
 	@rm -rf $(NAME)
 	@$(MAKE) -C $(LIBFT_DIR) fclean --quiet
+	@rm -rf $(MINILIBX_DIR)
 
 re: fclean all
 
