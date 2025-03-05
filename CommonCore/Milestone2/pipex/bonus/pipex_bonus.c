@@ -12,18 +12,6 @@
 
 #include "pipex_bonus.h"
 
-/* void	print_pipe_status(int **fds, int ac)
-{
-	int j;
-
-	j = 0;
-	while (j < ac - 4)
-	{
-		ft_printfd(2, "Pipe %d: [%d, %d]\n", j, fds[j][0], fds[j][1]);
-		j++;
-	}
-} */
-
 int	main(int ac, char **av, char **envp)
 {
 	t_pipex	*piper;
