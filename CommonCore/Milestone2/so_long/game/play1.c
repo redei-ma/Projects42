@@ -6,7 +6,7 @@
 /*   By: redei-ma <redei-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 18:07:42 by redei-ma          #+#    #+#             */
-/*   Updated: 2025/03/02 15:28:17 by redei-ma         ###   ########.fr       */
+/*   Updated: 2025/03/05 15:05:07 by redei-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	make_move(t_game *game, int new_x, int new_y)
 		game->collectibles--;
 	if (game->map[new_y][new_x] == 'F')
 	{
-		ft_printf("You lose!\n");
+		ft_printf("Moves: %d\nYou lose!\n", game->moves + 1);
 		close_game(game);
 	}
 	if (game->map[new_y][new_x] == 'E' && game->collectibles == 0)
 	{
-		ft_printf("You won! Moves: %d\n", game->moves + 1);
+		ft_printf("Moves: %d\nYou won!\n", game->moves + 1);
 		close_game(game);
 	}
 	if (game->map[new_y][new_x] == 'E' && game->collectibles != 0)
@@ -67,13 +67,13 @@ int	key_press(int keycode, t_game *game)
 {
 	if (keycode == 65307)
 		close_game(game);
-	else if (keycode == 'w')
+	else if (keycode == 'w' || keycode == 65362)
 		move_player(game, 0, -1);
-	else if (keycode == 's')
+	else if (keycode == 's' || keycode == 65364)
 		move_player(game, 0, 1);
-	else if (keycode == 'a')
+	else if (keycode == 'a' || keycode == 65361)
 		move_player(game, -1, 0);
-	else if (keycode == 'd')
+	else if (keycode == 'd' || keycode == 65363)
 		move_player(game, 1, 0);
 	return (0);
 }

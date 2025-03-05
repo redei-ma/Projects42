@@ -15,8 +15,6 @@ SRCS =	so_long.c \
 		utils/utils2.c \
 		utils/flood_fill_dfs.c
 
-OBJS = $(SRCS:.c=.o)
-
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 MINILIBX_DIR = ./minilibx-linux
@@ -29,27 +27,24 @@ $(LIBFT):
 	@echo "Compiling libft..."
 	@$(MAKE) -C $(LIBFT_DIR) --quiet
 
-$(MINILIBX_DIR):
+$(MINILIBX):
 	@echo "Cloning MinilibX..."
 	@git clone $(MLX_REPO) $(MINILIBX_DIR) --quiet
-
-$(MINILIBX): $(MINILIBX_DIR)
 	@echo "Compiling MinilibX..."
 	@$(MAKE) -C $(MINILIBX_DIR) --quiet
 
-$(NAME): $(LIBFT) $(MINILIBX) $(OBJS)
+$(NAME): $(LIBFT) $(MINILIBX) $(SRCS)
 	@echo "Compiling $(NAME)..."
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLXFLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(SRCS) $(LIBFT) $(MLXFLAGS) -I$(CURDIR) -o $(NAME)
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -I$(CURDIR) -I$(LIBFT_DIR) -I$(MINILIBX_DIR) -c $< -o $@
 
 clean:
-	@rm -rf $(OBJS)
+	@echo "Removing object files..."
 	@$(MAKE) -C $(LIBFT_DIR) clean --quiet
 	@$(MAKE) -C $(MINILIBX_DIR) clean --quiet
 
 fclean: clean
+	@echo "Removing library and executables..."
 	@rm -rf $(NAME)
 	@$(MAKE) -C $(LIBFT_DIR) fclean --quiet
 	@rm -rf $(MINILIBX_DIR)
